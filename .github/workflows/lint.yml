@@ -20,7 +20,7 @@ jobs:
         run: composer install
 
       - name: Run php-cs-fixer
-        run: ./vendor/bin/php-cs-fixer fix src
+        run: ./vendor/bin/php-cs-fixer fix app
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
