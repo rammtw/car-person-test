@@ -30,7 +30,7 @@ class CarService implements CarServiceContract
 
     public function takeOffControl(Models\Car $car): void
     {
-        if (is_null($car->controlled_by)) {
+        if (null === $car->controlled_by) {
             throw new \Exception('Car is out of control!');
         }
 
