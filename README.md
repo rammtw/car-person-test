@@ -8,3 +8,16 @@ C помощью laravel сделать api для управления спис
 Подготовить документацию в https://editor.swagger.io/
 
 Обязательно наличие тестов.
+
+---
+
+1. Запуск проекта:
+
+`docker compose up -d`
+
+2. Документация Swagger:
+http://laravel.test/api/documentation
+
+3. Запуск тестов:
+
+`docker compose exec php-fpm php /var/www/artisan test`

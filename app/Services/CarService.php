@@ -11,11 +11,12 @@ class CarService implements CarServiceContract
 {
     public function takeControl(Models\Car $car, int $userId): void
     {
-        if (isset($car->controlled_by)) {
-            throw new \Exception('Car is under control!');
-        }
         \DB::transaction(function () use ($car, $userId): void {
-            Models\Car::lockForUpdate()->find($car->id);
+            $car = Models\Car::lockForUpdate()->find($car->id);
+
+            if (isset($car->controlled_by)) {
+                throw new \Exception('Car is under control!');
+            }
 
             $user = Models\User::find($userId);
 
