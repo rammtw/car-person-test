@@ -11,6 +11,9 @@ C помощью laravel сделать api для управления спис
 
 ---
 
+- docker compose v2.11.2
+- docker 20.10.18
+
 1. Запуск проекта:
 
 - `cp .env.example .env`
