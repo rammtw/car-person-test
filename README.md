@@ -13,11 +13,11 @@ C помощью laravel сделать api для управления спис
 
 1. Запуск проекта:
 
-`/vendor/bin/sail up -d`
+`docker compose up -d`
 
 2. Документация Swagger:
 http://laravel.test/api/documentation
 
 3. Запуск тестов:
 
-`/vendor/bin/sail artisan test`
+`docker compose exec php-fpm php /var/www/artisan test`
