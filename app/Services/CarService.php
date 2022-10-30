@@ -14,9 +14,18 @@ class CarService implements CarServiceContract
         if (isset($car->controlled_by)) {
             throw new \Exception('Car is under control!');
         }
+        \DB::transaction(function () use ($car, $userId): void {
+            Models\Car::lockForUpdate()->find($car->id);
 
-        $car->controlled_by = $userId;
-        $car->save();
+            $user = Models\User::find($userId);
+
+            if (isset($user->car)) {
+                throw new \Exception('The user is already driving a car!');
+            }
+
+            $car->controlled_by = $userId;
+            $car->save();
+        });
     }
 
     public function takeOffControl(Models\Car $car): void
