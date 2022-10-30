@@ -1,0 +1,19 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Base API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/car/take_control": {
+            "get": {
+                "operationId": "bcde6e36519cdd187953d01ac8df3af9",
+                "responses": {
+                    "200": {
+                        "description": "Request to take control of car"
+                    }
+                }
+            }
+        }
+    }
+}

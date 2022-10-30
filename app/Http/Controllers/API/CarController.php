@@ -2,20 +2,24 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of PHP CS Fixer.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Car\TakeControlRequest;
+use CarService;
 
 class CarController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/api/car/take_control",
+     *     @OA\Response(response="200", description="Request to take control of car")
+     * )
+     */
+    public function takeControl(TakeControlRequest $request)
+    {
+        CarService::takeControl();
+
+        return response()->json();
+    }
 }
