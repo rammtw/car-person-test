@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::namespace('API')->group(function (): void {
-    Route::get('/car/take_control', [\App\Http\Controllers\API\CarController::class, 'takeControl']);
+    Route::post('/car/{car}/take_control', [\App\Http\Controllers\API\CarController::class, 'takeControl']);
+    Route::post('/car/{car}/take_off_control', [\App\Http\Controllers\API\CarController::class, 'takeOffControl']);
 });

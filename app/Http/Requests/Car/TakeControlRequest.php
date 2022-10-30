@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests\Car;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -24,7 +26,7 @@ class TakeControlRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'user_id' => 'required|integer|exists:users,id',
         ];
     }
 }

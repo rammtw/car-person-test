@@ -5,9 +5,71 @@
         "version": "0.1"
     },
     "paths": {
-        "/api/car/take_control": {
-            "get": {
-                "operationId": "bcde6e36519cdd187953d01ac8df3af9",
+        "/api/car/{car}/take_control": {
+            "post": {
+                "operationId": "9e3fe017129a9ee39bfed6ee81999e8c",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request to take control of car"
+                    }
+                }
+            }
+        },
+        "/api/car/{car}/take_off_control": {
+            "post": {
+                "operationId": "2d9e518e09bca1ed63ff17f5bf3a2b11",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Request to take control of car"
