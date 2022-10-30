@@ -23,16 +23,6 @@ ARG LARADOCK_PHP_VERSION
 # Set Environment Variables
 ENV DEBIAN_FRONTEND noninteractive
 
-# If you're in China, or you need to change sources, will be set CHANGE_SOURCE to true in .env.
-
-ARG CHANGE_SOURCE=false
-RUN if [ ${CHANGE_SOURCE} = true ]; then \
-    # Change application source from deb.debian.org to aliyun source
-    sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
-    sed -i 's/security.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
-    sed -i 's/security-cdn.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list \
-;fi
-
 # always run apt update when start and after add new source list, then clean up at end.
 RUN set -xe; \
     apt-get update -yqq && \
@@ -60,7 +50,8 @@ RUN set -xe; \
       fi && \
       # Install the zip extension
       docker-php-ext-install zip && \
-      php -m | grep -q 'zip'
+      php -m | grep -q 'zip' && \
+      php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer
 
 ###########################################################################
 # Opcache:
