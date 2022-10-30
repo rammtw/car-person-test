@@ -1,0 +1,144 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Base API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/car/{car}/take_control": {
+            "post": {
+                "operationId": "9e3fe017129a9ee39bfed6ee81999e8c",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Pass user id",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Request to take control of car"
+                    },
+                    "400": {
+                        "description": "Car is under control!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {},
+                                            "example": "[]"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Car is under control!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is already driving a car!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {},
+                                            "example": "[]"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "The user is already driving a car!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/car/{car}/take_off_control": {
+            "post": {
+                "operationId": "2d9e518e09bca1ed63ff17f5bf3a2b11",
+                "parameters": [
+                    {
+                        "name": "car",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "examples": {
+                            "int": {
+                                "summary": "An int value.",
+                                "value": "1"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Request to take off control of car"
+                    },
+                    "400": {
+                        "description": "Car is out of control!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {},
+                                            "example": "[]"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Car is out of control!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
