@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+declare(strict_types=1);
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::namespace('API')->group(function (): void {
+    Route::post('/car/{car}/take_control', [\App\Http\Controllers\API\CarController::class, 'takeControl']);
+    Route::post('/car/{car}/take_off_control', [\App\Http\Controllers\API\CarController::class, 'takeOffControl']);
 });
