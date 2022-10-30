@@ -16,9 +16,9 @@ C помощью laravel сделать api для управления спис
 - `cp .env.example .env`
 - `docker compose up -d`
 - В /etc/hosts добавить 127.0.0.1 laravel.test
-- `docker compose exec php-fpm php /var/www/artisan key:generate`
 - `docker compose exec php-fpm composer install`
-- `docker compose exec php-fpm php /var/www/artisan migrate --seed`
+- `docker compose exec php-fpm php /var/www/artisan key:generate`
+- `docker compose exec php-fpm --user=www-data php /var/www/artisan migrate --seed`
 
 2. Документация Swagger:
 http://laravel.test/api/documentation
